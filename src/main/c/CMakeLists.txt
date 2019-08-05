@@ -21,3 +21,5 @@ add_executable(pr src/algorithms/pr.cpp)
 add_executable(wcc src/algorithms/wcc.cpp)
 
 add_executable(converter src/tools/converter.cpp ${SOURCES})
+
+add_executable(load-graph-test src/tools/load-graph-test.cpp)
