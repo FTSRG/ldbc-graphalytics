@@ -28,6 +28,7 @@ import science.atlarge.graphalytics.graphblas.algorithms.cdlp.CommunityDetection
 import science.atlarge.graphalytics.graphblas.algorithms.lcc.LocalClusteringCoefficientJob;
 import science.atlarge.graphalytics.graphblas.algorithms.pr.PageRankJob;
 import science.atlarge.graphalytics.graphblas.algorithms.sssp.SingleSourceShortestPathJob;
+import science.atlarge.graphalytics.graphblas.algorithms.tc.TriangleCountJob;
 import science.atlarge.graphalytics.graphblas.algorithms.wcc.WeaklyConnectedComponents;
 import science.atlarge.graphalytics.report.result.BenchmarkMetrics;
 
@@ -127,6 +128,9 @@ public class GraphblasPlatform implements Platform {
 				break;
 			case SSSP:
 				job = new SingleSourceShortestPathJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
+				break;
+			case TC:
+				job = new TriangleCountJob(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);
 				break;
 			case WCC:
 				job = new WeaklyConnectedComponents(runSpecification, platformConfig, inputPath, outputPath, benchmarkGraph);

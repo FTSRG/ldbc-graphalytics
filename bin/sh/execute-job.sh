@@ -139,6 +139,16 @@ case $ALGORITHM in
          --threadnum $NUM_THREADS"
        ;;
 
+     tc)
+       COMMAND="$rootdir/bin/exe/$ALGORITHM \
+         --jobid $JOB_ID \
+         --dataset $INPUT_PATH \
+         --output $OUTPUT_PATH \
+         --directed $DIRECTED \
+         --log-path $LOG_PATH \
+         --threadnum $NUM_THREADS"
+       ;;
+
      sssp)
        COMMAND="$rootdir/bin/exe/$ALGORITHM
          --jobid $JOB_ID \
