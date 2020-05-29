@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
 
     std::cout << "Creating adjacency matrix from edges" << std::endl;
     GrB_Matrix A;
-    OK(GrB_Matrix_new(&A, parameters.weighted ? GrB_FP64 : GrB_BOOL, n, n))
+    OK(GrB_Matrix_new(&A, parameters.weighted ? GrB_FP64 : GrB_UINT64, n, n))
 
     Vertex src, trg;
     std::string line;
@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
             line_stream >> weight_string;
             OK(GrB_Matrix_setElement_FP64(A, std::stod(weight_string), src_mapped, trg_mapped))
         } else {
-            OK(GrB_Matrix_setElement_BOOL(A, 1, src_mapped, trg_mapped))
+            OK(GrB_Matrix_setElement_UINT64(A, 1, src_mapped, trg_mapped))
         }
         if (i % 100000000 == 0) {
             std::cout << "- Edge no." << i << " processed" << std::endl;
@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
     }
     if (!parameters.directed) {
         std::cout << "Converting matrix into symmetric" << std::endl;
-        OK(GrB_transpose(A, GrB_NULL, parameters.weighted ? GrB_PLUS_FP64 : GrB_PLUS_BOOL, A, GrB_NULL))
+        OK(GrB_transpose(A, GrB_NULL, parameters.weighted ? GrB_PLUS_FP64 : GrB_PLUS_UINT64, A, GrB_NULL))
     }
 
     char *matrix_file_c = strdup(parameters.matrix_file.c_str());
